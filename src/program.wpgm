@@ -16,4 +16,17 @@ program pacman {
 	// que arranque el juego!
 	game.start()
 	
+	const rivales = [new Rival(numero =1), new Rival(numero =2)]
+	
+	rivales.forEach { rival => 
+		game.addVisual(rival)
+		game.whenCollideDo(rival, { personaje =>
+			personaje.perderVida()
+			if (personaje.juegoTerminado()) {
+				game.stop()
+			}
+		})
+		
+	}
+	
 }
